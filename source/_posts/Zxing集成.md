@@ -288,7 +288,6 @@ if (requestCode == REQUEST_IMAGE) {
 通过以上几个属性我们就可以定制化的显示我们的扫描UI了，比如定制化微信扫描UI：
 
 执行效果
-
 ![](http://oegt3xt9o.bkt.clouddn.com/20160802151453053-3)
 
 当然了如果以上的以上，你还是对定制化UI方面不太满意，可以直接下载我的项目，然后引入lib-zxing module作为你的module，直接修改其代码。
