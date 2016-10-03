@@ -3,12 +3,14 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: 进击的白小黑
 subtitle:
-description:
-author: John Doe
-language:
+language: zh-Hans
 timezone:
+avatar: /uploads/avatar.png
+author: 进击的白小黑
+description: 你要的,时间都会给你
+duoshuo_shortname: zilingyaonote
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -68,4 +70,6 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repo: https://github.com/zilingyao/zilingyao.github.io.git
+  branch: master
