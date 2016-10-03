@@ -1,0 +1,31 @@
+language: node_js
+node_js: stable
+
+# S: Build Lifecycle
+install:
+  - npm install
+
+
+#before_script:
+  #- npm install -g gulp
+
+script:
+  - hexo cl
+  - hexo g
+
+after_script:
+  - cd ./public
+  - git init
+  - git config user.name "zilingyao"
+  - git config user.email "1961887727@qq.com"
+  - git add .
+  - git commit -m "Update boke"
+  - git push --force --quiet "https://${TOKEN}@${GH_REF}" master:master
+# E: Build LifeCycle
+
+branches:
+  only:
+    - boke
+env:
+ global:
+   - GH_REF: github.com/zilingyao/zilingyao.github.io.git
