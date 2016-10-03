@@ -138,7 +138,7 @@ if (requestCode == REQUEST_IMAGE) {
 由于我们的扫描组件是通过Fragment实现的，所以能够很轻松的实现扫描UI的定制化。
 
 在新的Activity中定义Layout布局文件
-```java
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/activity_second"
