@@ -10,7 +10,7 @@ timezone:
 avatar: /uploads/avatar.png
 author: 进击的白小黑
 description: 你要的,时间都会给你
-duoshuo_shortname: zilingyaonote
+# duoshuo_shortname: zilingyaonote
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
