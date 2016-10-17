@@ -10,6 +10,7 @@ categories: Android Weight
   [1]: http://oegt3xt9o.bkt.clouddn.com/checkbox.gif
   
 ## 代码实现
+<!--more-->
 ```java
 public class SmoothCheckBox extends View implements Checkable {
     private static final String KEY_INSTANCE_STATE = "InstanceState";
