@@ -1,0 +1,711 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,第三方," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="快速集成二维码扫描库，使用了一片枫叶的专栏的集成库
+本文的项目地址是在：android-zxingLibrary。
+使用说明
+可打开默认二维码扫描页面
+
+支持对图片Bitmap的扫描功能
+
+支持对UI的定制化操作
+
+支持对条形码的扫描功能
+
+支持生成二维码操作
+
+支持控制闪光灯开关
+使用方式：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zxing集成">
+<meta property="og:url" content="http://yoursite.com/2016/10/03/Zxing集成/index.html">
+<meta property="og:site_name" content="进击的白小黑">
+<meta property="og:description" content="快速集成二维码扫描库，使用了一片枫叶的专栏的集成库
+本文的项目地址是在：android-zxingLibrary。
+使用说明
+可打开默认二维码扫描页面
+
+支持对图片Bitmap的扫描功能
+
+支持对UI的定制化操作
+
+支持对条形码的扫描功能
+
+支持生成二维码操作
+
+支持控制闪光灯开关
+使用方式：">
+<meta property="og:image" content="http://oegt3xt9o.bkt.clouddn.com/20160727170831543-1">
+<meta property="og:image" content="http://oegt3xt9o.bkt.clouddn.com/20160802150716190-2">
+<meta property="og:image" content="http://oegt3xt9o.bkt.clouddn.com/20160802151453053-3">
+<meta property="og:image" content="http://oegt3xt9o.bkt.clouddn.com/20160802152820667-4">
+<meta property="og:image" content="http://oegt3xt9o.bkt.clouddn.com/20160726180250175-5">
+<meta property="og:updated_time" content="2016-10-17T03:41:14.204Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Zxing集成">
+<meta name="twitter:description" content="快速集成二维码扫描库，使用了一片枫叶的专栏的集成库
+本文的项目地址是在：android-zxingLibrary。
+使用说明
+可打开默认二维码扫描页面
+
+支持对图片Bitmap的扫描功能
+
+支持对UI的定制化操作
+
+支持对条形码的扫描功能
+
+支持生成二维码操作
+
+支持控制闪光灯开关
+使用方式：">
+<meta name="twitter:image" content="http://oegt3xt9o.bkt.clouddn.com/20160727170831543-1">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '进击的白小黑'
+    }
+  };
+</script>
+
+  <title> Zxing集成 | 进击的白小黑 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">进击的白小黑</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Zxing集成
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-03T17:27:37+00:00" content="2016-10-03">
+              2016-10-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>快速集成二维码扫描库，使用了<a href="http://blog.csdn.net/qq_23547831/article/details/52037710" target="_blank" rel="external">一片枫叶的专栏</a>的集成库</p>
+<p>本文的项目地址是在：android-zxingLibrary。</p>
+<p>使用说明</p>
+<pre><code>可打开默认二维码扫描页面
+
+支持对图片Bitmap的扫描功能
+
+支持对UI的定制化操作
+
+支持对条形码的扫描功能
+
+支持生成二维码操作
+
+支持控制闪光灯开关
+</code></pre><p>使用方式：<br><a id="more"></a><br>集成默认的二维码扫描页面<br>在具体介绍该扫描库之前我们先看一下其具体的使用方式，看看是不是几行代码就可以集成二维码扫描的功能。</p>
+<p>在module的build.gradle中执行compile操作<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile <span class="string">'cn.yipianfengye.android:zxing-library:1.9'</span></div></pre></td></tr></table></figure></p>
+<p>在Application中执行初始化操作<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate();</div><div class="line"></div><div class="line">        ZXingLibrary.initDisplayOpinion(<span class="keyword">this</span>);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>在代码中执行打开扫描二维码界面操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 打开默认二维码扫描界面</div><div class="line"> */</div><div class="line">button1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">        Intent intent = <span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>, CaptureActivity.class);</div><div class="line">        startActivityForResult(intent, REQUEST_CODE);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>这里的REQUEST_CODE是我们定义的int型常量。</p>
+<p>在Activity的onActivityResult方法中接收扫描结果<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">         * 处理二维码扫描结果</div><div class="line">         */</div><div class="line">        <span class="keyword">if</span> (requestCode == REQUEST_CODE) &#123;</div><div class="line">            <span class="comment">//处理扫描结果（在界面上显示）</span></div><div class="line">            <span class="keyword">if</span> (<span class="keyword">null</span> != data) &#123;</div><div class="line">                Bundle bundle = data.getExtras();</div><div class="line">                <span class="keyword">if</span> (bundle == <span class="keyword">null</span>) &#123;</div><div class="line">                    <span class="keyword">return</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) &#123;</div><div class="line">                    String result = bundle.getString(CodeUtils.RESULT_STRING);</div><div class="line">                    Toast.makeText(<span class="keyword">this</span>, <span class="string">"解析结果:"</span> + result, Toast.LENGTH_LONG).show();</div><div class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) &#123;</div><div class="line">                    Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"解析二维码失败"</span>, Toast.LENGTH_LONG).show();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<p>怎么样是不是很简单？下面我们可以来看一下具体的执行效果：</p>
+<p>执行效果：</p>
+<p><img src="http://oegt3xt9o.bkt.clouddn.com/20160727170831543-1" alt=""></p>
+<p>但是这样的话是不是太简单了，如果我想选择图片解析呢？别急，对二维码图片的解析也是支持的</p>
+<p>集成对二维码图片的解析功能</p>
+<p>调用系统API打开图库<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_GET_CONTENT);</div><div class="line">intent.addCategory(Intent.CATEGORY_OPENABLE);</div><div class="line">intent.setType(<span class="string">"image/*"</span>);</div><div class="line">startActivityForResult(intent, REQUEST_IMAGE);</div></pre></td></tr></table></figure></p>
+<p>在Activity的onActivityResult方法中获取用户选中的图片并调用二维码图片解析API<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (requestCode == REQUEST_IMAGE) &#123;</div><div class="line">            <span class="keyword">if</span> (data != <span class="keyword">null</span>) &#123;</div><div class="line">                Uri uri = data.getData();</div><div class="line">                ContentResolver cr = getContentResolver();</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    Bitmap mBitmap = MediaStore.Images.Media.getBitmap(cr, uri);<span class="comment">//显得到bitmap图片</span></div><div class="line"></div><div class="line">                    CodeUtils.analyzeBitmap(mBitmap, <span class="keyword">new</span> CodeUtils.AnalyzeCallback() &#123;</div><div class="line">                        <span class="meta">@Override</span></div><div class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnalyzeSuccess</span><span class="params">(Bitmap mBitmap, String result)</span> </span>&#123;</div><div class="line">                            Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"解析结果:"</span> + result, Toast.LENGTH_LONG).show();</div><div class="line">                        &#125;</div><div class="line"></div><div class="line">                        <span class="meta">@Override</span></div><div class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnalyzeFailed</span><span class="params">()</span> </span>&#123;</div><div class="line">                            Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"解析二维码失败"</span>, Toast.LENGTH_LONG).show();</div><div class="line">                        &#125;</div><div class="line">                    &#125;);</div><div class="line"></div><div class="line">                    <span class="keyword">if</span> (mBitmap != <span class="keyword">null</span>) &#123;</div><div class="line">                        mBitmap.recycle();</div><div class="line">                    &#125;</div><div class="line">                &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">            &#125;</div></pre></td></tr></table></figure></p>
+<p>执行效果<br><img src="http://oegt3xt9o.bkt.clouddn.com/20160802150716190-2" alt=""></p>
+<p>有了默认的二维码扫描界面，也有了对二维码图片的解析，可能有的同学会说如果我想定制化显示UI怎么办呢？没关系也支持滴。</p>
+<p>定制化显示扫描UI<br>由于我们的扫描组件是通过Fragment实现的，所以能够很轻松的实现扫描UI的定制化。</p>
+<p>在新的Activity中定义Layout布局文件<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">FrameLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/activity_second"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/second_button1"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:text</span>=<span class="string">"取消"</span></div><div class="line">        <span class="attr">android:layout_marginTop</span>=<span class="string">"20dp"</span></div><div class="line">        <span class="attr">android:layout_marginLeft</span>=<span class="string">"20dp"</span></div><div class="line">        <span class="attr">android:layout_marginRight</span>=<span class="string">"20dp"</span></div><div class="line">        <span class="attr">android:layout_marginBottom</span>=<span class="string">"10dp"</span></div><div class="line">        <span class="attr">android:layout_gravity</span>=<span class="string">"bottom|center_horizontal"</span></div><div class="line">        /&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">FrameLayout</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/fl_my_container"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">        &gt;<span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>启动id为fl_my_container的FrameLayout就是我们需要替换的扫描组件，也就是说我们会将我们定义的扫描Fragment替换到id为fl_my_container的FrameLayout的位置。而上面的button是我们添加的一个额外的控件，在这里你可以添加任意的控件，各种UI效果等。具体可以看下面在Activity的初始化过程。</p>
+<p>在Activity中执行Fragment的初始化操作<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_second);</div><div class="line">        <span class="comment">/**</span></div><div class="line">         * 执行扫面Fragment的初始化操作</div><div class="line">         */</div><div class="line">        CaptureFragment captureFragment = <span class="keyword">new</span> CaptureFragment();</div><div class="line">        <span class="comment">// 为二维码扫描界面设置定制化界面</span></div><div class="line">        CodeUtils.setFragmentArgs(captureFragment, R.layout.my_camera);</div><div class="line"></div><div class="line">        captureFragment.setAnalyzeCallback(analyzeCallback);</div><div class="line">        <span class="comment">/**</span></div><div class="line">         * 替换我们的扫描控件</div><div class="line">         */ getSupportFragmentManager().beginTransaction().replace(R.id.fl_my_container, captureFragment).commit();</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>其中analyzeCallback是我们定义的扫描回调函数，其具体的定义：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">     * 二维码解析回调函数</div><div class="line">     */</div><div class="line">    CodeUtils.AnalyzeCallback analyzeCallback = <span class="keyword">new</span> CodeUtils.AnalyzeCallback() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnalyzeSuccess</span><span class="params">(Bitmap mBitmap, String result)</span> </span>&#123;</div><div class="line">            Intent resultIntent = <span class="keyword">new</span> Intent();</div><div class="line">            Bundle bundle = <span class="keyword">new</span> Bundle();</div><div class="line">            bundle.putInt(CodeUtils.RESULT_TYPE, CodeUtils.RESULT_SUCCESS);</div><div class="line">            bundle.putString(CodeUtils.RESULT_STRING, result);</div><div class="line">            resultIntent.putExtras(bundle);</div><div class="line">            SecondActivity.<span class="keyword">this</span>.setResult(RESULT_OK, resultIntent);</div><div class="line">            SecondActivity.<span class="keyword">this</span>.finish();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnalyzeFailed</span><span class="params">()</span> </span>&#123;</div><div class="line">            Intent resultIntent = <span class="keyword">new</span> Intent();</div><div class="line">            Bundle bundle = <span class="keyword">new</span> Bundle();</div><div class="line">            bundle.putInt(CodeUtils.RESULT_TYPE, CodeUtils.RESULT_FAILED);</div><div class="line">            bundle.putString(CodeUtils.RESULT_STRING, <span class="string">""</span>);</div><div class="line">            resultIntent.putExtras(bundle);</div><div class="line">            SecondActivity.<span class="keyword">this</span>.setResult(RESULT_OK, resultIntent);</div><div class="line">            SecondActivity.<span class="keyword">this</span>.finish();</div><div class="line">        &#125;</div><div class="line">    &#125;;</div></pre></td></tr></table></figure></p>
+<p>仔细看的话，你会发现我们调用了CondeUtils.setFragmentArgs方法，该方法主要用于修改扫描界面扫描框与透明框相对位置的，与若不调用的话，其会显示默认的组件效果，而如果调用该方法的话，可以修改扫描框与透明框的相对位置等UI效果，我们可以看一下my_camera布局文件的实现。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line">&lt;FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"</div><div class="line">    xmlns:app="http://schemas.android.com/apk/res-auto"</div><div class="line">    android:layout_width="fill_parent"</div><div class="line">    android:layout_height="fill_parent" &gt;</div><div class="line"></div><div class="line">    &lt;SurfaceView</div><div class="line">        android:id="@+id/preview_view"</div><div class="line">        android:layout_width="wrap_content"</div><div class="line">        android:layout_height="wrap_content"</div><div class="line">        /&gt;</div><div class="line"></div><div class="line">    &lt;com.uuzuche.lib_zxing.view.ViewfinderView</div><div class="line">        android:id="@+id/viewfinder_view"</div><div class="line">        android:layout_width="wrap_content"</div><div class="line">        android:layout_height="wrap_content"</div><div class="line">        app:inner_width="200dp"</div><div class="line">        app:inner_height="200dp"</div><div class="line">        app:inner_margintop="150dp"</div><div class="line">        app:inner_corner_color="@color/scan_corner_color"</div><div class="line">        app:inner_corner_length="30dp"</div><div class="line">        app:inner_corner_width="5dp"</div><div class="line">        app:inner_scan_bitmap="@drawable/scan_image"</div><div class="line">        app:inner_scan_speed="10"</div><div class="line">        /&gt;</div><div class="line"></div><div class="line">&lt;/FrameLayout&gt;</div></pre></td></tr></table></figure></p>
+<p>上面我们自定义的扫描控件的布局文件，下面我们看一下默认的扫描控件的布局文件：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line">&lt;FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"</div><div class="line">    xmlns:app="http://schemas.android.com/apk/res-auto"</div><div class="line">    android:layout_width="fill_parent"</div><div class="line">    android:layout_height="fill_parent" &gt;</div><div class="line"></div><div class="line">    &lt;SurfaceView</div><div class="line">        android:id="@+id/preview_view"</div><div class="line">        android:layout_width="wrap_content"</div><div class="line">        android:layout_height="wrap_content"</div><div class="line">        /&gt;</div><div class="line"></div><div class="line">    &lt;com.uuzuche.lib_zxing.view.ViewfinderView</div><div class="line">        android:id="@+id/viewfinder_view"</div><div class="line">        android:layout_width="wrap_content"</div><div class="line">        android:layout_height="wrap_content"</div><div class="line">        /&gt;</div><div class="line"></div><div class="line">&lt;/FrameLayout&gt;</div></pre></td></tr></table></figure></p>
+<p>可以发现其主要的区别就是在自定义的扫描控件中多了几个自定义的扫描框属性：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;declare-styleable name="innerrect"&gt;</div><div class="line">        &lt;attr name="inner_width" format="dimension"/&gt;&lt;!-- 控制扫描框的宽度 --&gt;</div><div class="line">        &lt;attr name="inner_height" format="dimension"/&gt;&lt;!-- 控制扫描框的高度 --&gt;</div><div class="line">        &lt;attr name="inner_margintop" format="dimension" /&gt;&lt;!-- 控制扫描框距离顶部的距离 --&gt;</div><div class="line">        &lt;attr name="inner_corner_color" format="color" /&gt;&lt;!-- 控制扫描框四角的颜色 --&gt;</div><div class="line">        &lt;attr name="inner_corner_length" format="dimension" /&gt;&lt;!-- 控制扫描框四角的长度 --&gt;</div><div class="line">        &lt;attr name="inner_corner_width" format="dimension" /&gt;&lt;!-- 控制扫描框四角的宽度 --&gt;</div><div class="line">        &lt;attr name="inner_scan_bitmap" format="reference" /&gt;&lt;!-- 控制扫描图 --&gt;</div><div class="line">        &lt;attr name="inner_scan_speed" format="integer" /&gt;&lt;!-- 控制扫描速度 --&gt;</div><div class="line">    &lt;/declare-styleable&gt;</div></pre></td></tr></table></figure></p>
+<p>通过以上几个属性我们就可以定制化的显示我们的扫描UI了，比如定制化微信扫描UI：</p>
+<p>执行效果<br><img src="http://oegt3xt9o.bkt.clouddn.com/20160802151453053-3" alt=""></p>
+<p>当然了如果以上的以上，你还是对定制化UI方面不太满意，可以直接下载我的项目，然后引入lib-zxing module作为你的module，直接修改其代码。</p>
+<p>生成二维码图片</p>
+<p>生成带Logo的二维码图片：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">         * 生成二维码图片</div><div class="line">         */</div><div class="line">        button.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">                String textContent = editText.getText().toString();</div><div class="line">                <span class="keyword">if</span> (TextUtils.isEmpty(textContent)) &#123;</div><div class="line">                    Toast.makeText(ThreeActivity.<span class="keyword">this</span>, <span class="string">"您的输入为空!"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">                    <span class="keyword">return</span>;</div><div class="line">                &#125;</div><div class="line">                editText.setText(<span class="string">""</span>);</div><div class="line">                mBitmap = CodeUtils.createImage(textContent, <span class="number">400</span>, <span class="number">400</span>, BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));</div><div class="line">                imageView.setImageBitmap(mBitmap);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure></p>
+<p>生成不带logo的二维码图片<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">         * 生成不带logo的二维码图片</div><div class="line">         */</div><div class="line">        button1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line"></div><div class="line">                String textContent = editText.getText().toString();</div><div class="line">                <span class="keyword">if</span> (TextUtils.isEmpty(textContent)) &#123;</div><div class="line">                    Toast.makeText(ThreeActivity.<span class="keyword">this</span>, <span class="string">"您的输入为空!"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">                    <span class="keyword">return</span>;</div><div class="line">                &#125;</div><div class="line">                editText.setText(<span class="string">""</span>);</div><div class="line">                mBitmap = CodeUtils.createImage(textContent, <span class="number">400</span>, <span class="number">400</span>, <span class="keyword">null</span>);</div><div class="line">                imageView.setImageBitmap(mBitmap);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure></p>
+<p>执行效果<br><img src="http://oegt3xt9o.bkt.clouddn.com/20160802152820667-4" alt=""></p>
+<p>支持控制闪光灯<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 打开闪光灯</div><div class="line"> */</div><div class="line">CodeUtils.isLightEnable(<span class="keyword">true</span>);</div><div class="line"><span class="comment">/**</span></div><div class="line"> * 关闭闪光灯</div><div class="line"> */</div><div class="line"> CodeUtils.isLightEnable(<span class="keyword">false</span>);</div></pre></td></tr></table></figure></p>
+<p>创建二维码库的流程：</p>
+<p>创建一个android studio项目，并创建zxingLibrary库；<br><img src="http://oegt3xt9o.bkt.clouddn.com/20160726180250175-5" alt=""></p>
+<p>在zxingLibrary库中实现二维码的扫描操作；<br>在实现过程中有以下几个注意点：</p>
+<p>（1）由于二维码扫描界面是一个Activity，所以需要在AndroidManifest.xml中定义，而我为了减少对项目的依赖，选择了在zxingLibrary中的AndroidManifest.xml中定义该Activity。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;application android:allowBackup="true"</div><div class="line">        &gt;</div><div class="line"></div><div class="line">        &lt;activity</div><div class="line">            android:configChanges="orientation|keyboardHidden"</div><div class="line">            android:name="com.uuzuche.lib_zxing.activity.CaptureActivity"</div><div class="line">            android:screenOrientation="portrait"</div><div class="line">            android:windowSoftInputMode="stateAlwaysHidden"</div><div class="line">            android:label="扫描二维码"</div><div class="line">           android:theme="@style/Theme.AppCompat.NoActionBar"</div><div class="line">            &gt;&lt;/activity&gt;</div><div class="line">    &lt;/application&gt;</div></pre></td></tr></table></figure></p>
+<p>（2）由于扫描操作需要使用摄像头等权限，也在zxingLibrary中的AndroidManifest.xml中申请了部分权限：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;uses-permission android:name=<span class="string">"android.permission.CAMERA"</span> /&gt;</div><div class="line">    &lt;uses-permission android:name=<span class="string">"android.permission.FLASHLIGHT"</span> /&gt;</div><div class="line"></div><div class="line">    &lt;uses-feature android:name=<span class="string">"android.hardware.camera"</span> /&gt;</div><div class="line">    &lt;uses-feature android:name=<span class="string">"android.hardware.camera.autofocus"</span> /&gt;</div><div class="line"></div><div class="line">    &lt;uses-permission android:name=<span class="string">"android.permission.VIBRATE"</span> /&gt;</div><div class="line">    &lt;uses-permission android:name=<span class="string">"android.permission.WAKE_LOCK"</span> /&gt;</div><div class="line">    &lt;uses-permission android:name=<span class="string">"android.permission.READ_EXTERNAL_STORAGE"</span> /&gt;</div><div class="line">    &lt;uses-permission android:name=<span class="string">"android.permission.INTERNET"</span> /&gt;</div></pre></td></tr></table></figure></p>
+<p>（3）原来的项目中二维码扫面的部分是作为主项目实现的，部分代码使用了switch（id）的操作，而这样的代码在library中有问题，具体可参考：在Android library中不能使用switch-case语句访问资源ID的原因分析及解决方案，所以我做了修改：</p>
+<p>修改之前：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message message)</span> </span>&#123;</div><div class="line">    <span class="keyword">switch</span> (message.what) &#123;</div><div class="line">      <span class="keyword">case</span> R.id.decode:</div><div class="line">        decode((<span class="keyword">byte</span>[]) message.obj, message.arg1, message.arg2);</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">      <span class="keyword">case</span> R.id.quit:</div><div class="line">        Looper.myLooper().quit();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<p>修改之后：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message message)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (message.what == R.id.decode) &#123;</div><div class="line">      decode((<span class="keyword">byte</span>[]) message.obj, message.arg1, message.arg2);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (message.what == R.id.quit) &#123;</div><div class="line">      Looper.myLooper().quit();</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<p>将zxingLibrary库上传至Jcenter中<br>为了使用compile，所以讲zxingLibrary库上传至了jCenter中，具体的上传过程可参考我的：<a href="http://blog.csdn.net/qq_23547831/article/details/50017151" target="_blank" rel="external">Github项目解析（二）–&gt;将Android项目发布至JCenter代码库</a></p>
+<p>有同学反应扫描过程中，二维码图片有拉伸的现象，最新的compile已经改正，具体原因可参考：<a href="http://blog.csdn.net/aaawqqq/article/details/24852915" target="_blank" rel="external">Zxing图片拉伸解决 Android 二维码扫描</a></p>
+<p>总结：</p>
+<p>以上就是我实现的这个快速继承二维码扫描库的过程。主要优点就是可以通过android studio快速的继承到我们的项目中，有兴趣的同学可以到github上看一下具体实现。项目地址：android-zxingLibrary</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/第三方/" rel="tag">#第三方</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/11/Git从入门到入门/" rel="next" title="Git从入门到入门">
+                <i class="fa fa-chevron-left"></i> Git从入门到入门
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/04/启动页/" rel="prev" title="启动页">
+                启动页 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="进击的白小黑" />
+          <p class="site-author-name" itemprop="name">进击的白小黑</p>
+          <p class="site-description motion-element" itemprop="description">你要的,时间都会给你</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">进击的白小黑</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

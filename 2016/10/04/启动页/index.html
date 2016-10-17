@@ -1,0 +1,654 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,项目," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="开始搞个启动页
+WelcomeActivity一般应用第一次打开时，会有一个引导页的效果，但当第二次再打开的时候，将直接跳转到主页，所以这个Activity，就是用来做此判断的。代码也是比较简单。1234567891011121314151617181920212223242526272829303132333435363738394041424344454647private boolean i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="启动页">
+<meta property="og:url" content="http://yoursite.com/2016/10/04/启动页/index.html">
+<meta property="og:site_name" content="进击的白小黑">
+<meta property="og:description" content="开始搞个启动页
+WelcomeActivity一般应用第一次打开时，会有一个引导页的效果，但当第二次再打开的时候，将直接跳转到主页，所以这个Activity，就是用来做此判断的。代码也是比较简单。1234567891011121314151617181920212223242526272829303132333435363738394041424344454647private boolean i">
+<meta property="og:image" content="http://oegt3xt9o.bkt.clouddn.com/gif_01.gif">
+<meta property="og:image" content="http://oegt3xt9o.bkt.clouddn.com/gif_02.gif">
+<meta property="og:image" content="http://oegt3xt9o.bkt.clouddn.com/gif_03.gif">
+<meta property="og:image" content="http://oegt3xt9o.bkt.clouddn.com/gif_04.gif">
+<meta property="og:image" content="http://oegt3xt9o.bkt.clouddn.com/gif_05.gif">
+<meta property="og:updated_time" content="2016-10-17T03:41:14.204Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="启动页">
+<meta name="twitter:description" content="开始搞个启动页
+WelcomeActivity一般应用第一次打开时，会有一个引导页的效果，但当第二次再打开的时候，将直接跳转到主页，所以这个Activity，就是用来做此判断的。代码也是比较简单。1234567891011121314151617181920212223242526272829303132333435363738394041424344454647private boolean i">
+<meta name="twitter:image" content="http://oegt3xt9o.bkt.clouddn.com/gif_01.gif">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '进击的白小黑'
+    }
+  };
+</script>
+
+  <title> 启动页 | 进击的白小黑 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">进击的白小黑</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                启动页
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-04T16:36:52+00:00" content="2016-10-04">
+              2016-10-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>开始搞个启动页</p>
+<h3 id="WelcomeActivity"><a href="#WelcomeActivity" class="headerlink" title="WelcomeActivity"></a>WelcomeActivity</h3><p>一般应用第一次打开时，会有一个引导页的效果，但当第二次再打开的时候，将直接跳转到主页，所以这个Activity，就是用来做此判断的。代码也是比较简单。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">boolean</span> isFirst = <span class="keyword">false</span>;<span class="comment">//是否第一次打开App</span></div><div class="line"></div><div class="line">  <span class="keyword">private</span> Handler handler = <span class="keyword">new</span> Handler();</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">      <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">      requestWindowFeature(Window.FEATURE_NO_TITLE);</div><div class="line">      setContentView(R.layout.activity_welcome);</div><div class="line">      initData();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initData</span><span class="params">()</span> </span>&#123;</div><div class="line">      SharedPreferences sp = getSharedPreferences(<span class="string">"WelcomeActivity"</span>, <span class="number">0</span>);</div><div class="line">      isFirst = sp.getBoolean(<span class="string">"isFirst"</span>,<span class="keyword">true</span>);</div><div class="line">      <span class="comment">//判断是否第一次打开App,是的话跳转到引导页，否则跳转到主页</span></div><div class="line">      <span class="keyword">if</span> (isFirst) &#123;</div><div class="line">          handler.postDelayed(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">              <span class="meta">@Override</span></div><div class="line">              <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">                  gotoStartActivity();</div><div class="line">              &#125;</div><div class="line">          &#125;, <span class="number">2000</span>);</div><div class="line">          SharedPreferences.Editor editor = sp.edit();</div><div class="line">          editor.putBoolean(<span class="string">"isFirst"</span>,<span class="keyword">false</span>);</div><div class="line">          editor.commit();</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">          handler.postDelayed(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">              <span class="meta">@Override</span></div><div class="line">              <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">                  gotoMainActivity();</div><div class="line">              &#125;</div><div class="line">          &#125;, <span class="number">2000</span>);</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">gotoMainActivity</span><span class="params">()</span> </span>&#123;</div><div class="line">      Intent intent = <span class="keyword">new</span> Intent(WelcomeActivity.<span class="keyword">this</span>, MainActivity.class);</div><div class="line">      startActivity(intent);</div><div class="line">      finish();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">gotoStartActivity</span><span class="params">()</span> </span>&#123;</div><div class="line">      Intent intent = <span class="keyword">new</span> Intent(WelcomeActivity.<span class="keyword">this</span>, StartActivity.class);</div><div class="line">      startActivity(intent);</div><div class="line">      finish();</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h3 id="启动页实现过程"><a href="#启动页实现过程" class="headerlink" title="启动页实现过程"></a>启动页实现过程</h3><h4 id="实现整体滑动效果"><a href="#实现整体滑动效果" class="headerlink" title="实现整体滑动效果"></a>实现整体滑动效果</h4><p>首先我们先来实现整体的滑动效果，也就是添加3张图片作为ViewPager的滑动页面，因此我们的activity_guide.xml如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">    &gt;</div><div class="line"></div><div class="line">     <span class="tag">&lt;<span class="name">android.support.v4.view.ViewPager</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/vp_guide"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"fill_parent"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"fill_parent"</span> &gt;</div><div class="line">    <span class="tag">&lt;/<span class="name">android.support.v4.view.ViewPager</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>java 代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GuideActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span></span>&#123;</div><div class="line">    <span class="comment">// ViewPager的数据</span></div><div class="line">    <span class="keyword">private</span> List&lt;ImageView&gt; imageViewList;</div><div class="line">    ViewPager mViewPager;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        <span class="comment">// 去标题, 需要在setContentView方法之前调用</span></div><div class="line">        requestWindowFeature(Window.FEATURE_NO_TITLE);</div><div class="line">        setContentView(R.layout.activity_guide);</div><div class="line">        initView();<span class="comment">// 初始化控件</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 初始化控件</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initView</span><span class="params">()</span> </span>&#123;</div><div class="line">        mViewPager = (ViewPager) findViewById(R.id.vp_guide);</div><div class="line">        GuideAdapter adapter = <span class="keyword">new</span> GuideAdapter();</div><div class="line">        mViewPager.setAdapter(adapter);</div><div class="line">&#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * TODO：初始化ViewPager数据 void</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initData</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] imageResIDs = &#123;R.drawable.guide_1, R.drawable.guide_2,</div><div class="line">                R.drawable.guide_3&#125;;</div><div class="line">        imageViewList = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">        ImageView iv;<span class="comment">// 图片</span></div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; imageResIDs.length; i++) &#123;</div><div class="line">            iv = <span class="keyword">new</span> ImageView(<span class="keyword">this</span>);</div><div class="line">            iv.setBackgroundResource(imageResIDs[i]);</div><div class="line">            imageViewList.add(iv);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">GuideAdapter</span> <span class="keyword">extends</span> <span class="title">PagerAdapter</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> imageViewList.size();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isViewFromObject</span><span class="params">(View view, Object object)</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> view == object;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">/*</span></div><div class="line">         * 删除元素</div><div class="line">         */</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroyItem</span><span class="params">(ViewGroup container, <span class="keyword">int</span> position, Object object)</span> </span>&#123;</div><div class="line">            container.removeView((View) object);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> Object <span class="title">instantiateItem</span><span class="params">(ViewGroup container, <span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">            ImageView iv = imageViewList.get(position);</div><div class="line">            container.addView(iv);<span class="comment">// 1. 向ViewPager中添加一个view对象</span></div><div class="line">            <span class="keyword">return</span> iv; <span class="comment">// 2. 返回当前添加的view对象</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>效果如下：<br><img src="http://oegt3xt9o.bkt.clouddn.com/gif_01.gif" alt=""></p>
+<h4 id="添加按钮"><a href="#添加按钮" class="headerlink" title="添加按钮"></a>添加按钮</h4><p>修改activity_guide.xml文件如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">    &gt;</div><div class="line"></div><div class="line">     <span class="tag">&lt;<span class="name">android.support.v4.view.ViewPager</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/vp_guide"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"fill_parent"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"fill_parent"</span> &gt;</div><div class="line">    <span class="tag">&lt;/<span class="name">android.support.v4.view.ViewPager</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/btn_guide_start_experience"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_alignParentBottom</span>=<span class="string">"true"</span></div><div class="line">        <span class="attr">android:layout_centerHorizontal</span>=<span class="string">"true"</span></div><div class="line">        <span class="attr">android:layout_marginBottom</span>=<span class="string">"60dip"</span></div><div class="line">        <span class="attr">android:background</span>=<span class="string">"@drawable/button_bg"</span></div><div class="line">        <span class="attr">android:textColor</span>=<span class="string">"@drawable/button_textcolor"</span></div><div class="line">        <span class="attr">android:text</span>=<span class="string">"开始体验"</span></div><div class="line">        <span class="attr">android:textSize</span>=<span class="string">"20sp"</span> </div><div class="line">        <span class="attr">android:paddingLeft</span>=<span class="string">"20dip"</span></div><div class="line">        <span class="attr">android:paddingRight</span>=<span class="string">"20dip"</span></div><div class="line">        <span class="attr">android:paddingTop</span>=<span class="string">"5dip"</span></div><div class="line">        <span class="attr">android:paddingBottom</span>=<span class="string">"5dip"</span></div><div class="line">        <span class="attr">android:visibility</span>=<span class="string">"gone"</span></div><div class="line">        /&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>button_bg.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="comment">&lt;!-- gudie页的Botton --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">selector</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span> &gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_pressed</span>=<span class="string">"true"</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/button_red_pressed"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_pressed</span>=<span class="string">"false"</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/button_red_normal"</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">selector</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>button_textcolor.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">selector</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span> &gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_pressed</span>=<span class="string">"false"</span> <span class="attr">android:color</span>=<span class="string">"@android:color/white"</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line"> 	<span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_pressed</span>=<span class="string">"true"</span> <span class="attr">android:color</span>=<span class="string">"@android:color/black"</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">selector</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>显然我们添加了一个Button，并将其设置在父布局的底部而且水平居中，注意此时按钮先设置为gone，待需要显示时再设置其可见。然后我们在Activity_Guide.java中添加如下代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">btnStartExperience = (Button) findViewById(R.id.btn_guide_start_experience)</div><div class="line"><span class="comment">//设置监听器</span></div><div class="line">btnStartExperience.setOnClickListener(<span class="keyword">this</span>);</div></pre></td></tr></table></figure></p>
+<p>  设置完按钮的点击事件后，我们还需要解决一个问题，那就是当需要显示Button时再显示出来，很显然，我们只需在第3页时才需要显示按钮，这时我们就需要借助ViewPager的滑动事件来处理了，因此我们实现ViewPager.OnPageChangeListener接口，并实现其方法如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 当页面正在滚动时 position 当前选中的是哪个页面 positionOffset 比例 positionOffsetPixels 偏移像素</div><div class="line"> */</div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageScrolled</span><span class="params">(<span class="keyword">int</span> position, <span class="keyword">float</span> positionOffset,</span></span></div><div class="line">                           <span class="keyword">int</span> positionOffsetPixels) &#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 当页面被选中</div><div class="line"> */</div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageSelected</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 当页面滚动状态改变</div><div class="line"> */</div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageScrollStateChanged</span><span class="params">(<span class="keyword">int</span> state)</span> </span>&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>简单介绍一下三个方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">onPageScrolled(<span class="keyword">int</span> position, <span class="keyword">float</span> positionOffset, </div><div class="line"><span class="keyword">int</span> positionOffsetPixels)</div></pre></td></tr></table></figure></p>
+<p>当页面正在滚动时被回调。<br>position 表示当前选中的是第几个页面；<br>positionOffset 是当前页面滑动比例，其值得范围是[0,1)，如果页面向右翻动，这个值不断变大，最后在趋近1的情况后突变为0。如果页面向左翻动，这个值不断变小，最后变为0。<br>positionOffsetPixels 是当前页面滑动像素的偏移距离</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">onPageScrollStateChanged(<span class="keyword">int</span> state)</div></pre></td></tr></table></figure>
+<p>当页面滚动状态改变时被回调。有三个值：0（END）,1(PRESS) , 2(UP) 。<br>当用手指滑动翻页时，手指按下去的时候会触发这个方法，state值为1，手指抬起时，如果发生了滑动（即使很小），其值会变为2，最后变为0 。总共执行这个方法三次。当当前页面翻页时，会执行这个方法两次，state值分别为2 , 0 。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">onPageSelected(<span class="keyword">int</span> position)</div></pre></td></tr></table></figure>
+<p>当页面被选中时回调，position表示被选中的页面，position下标从0开始计算。<br>  很显然，我们应该利用onPageSelected(int position)决定实现我们的Button是否展示，当position为最后一个页面时展示，其他时候都隐藏即可。代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">/**</span></div><div class="line"> * 当页面被选中</div><div class="line"> */</div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageSelected</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">    <span class="comment">// 显示体验按钮</span></div><div class="line">    <span class="keyword">if</span> (position == imageViewList.size() - <span class="number">1</span>) &#123;</div><div class="line">        <span class="comment">// 显示</span></div><div class="line">        btnStartExperience.setVisibility(View.VISIBLE);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        btnStartExperience.setVisibility(View.GONE);<span class="comment">// 隐藏</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>到此按钮也集成完，我们看看整体GuideActivity代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.zejian.commonstartpage;</div><div class="line"></div><div class="line"><span class="keyword">import</span> android.app.Activity;</div><div class="line"><span class="keyword">import</span> android.os.Bundle;</div><div class="line"><span class="keyword">import</span> android.support.v4.view.PagerAdapter;</div><div class="line"><span class="keyword">import</span> android.support.v4.view.ViewPager;</div><div class="line"><span class="keyword">import</span> android.view.View;</div><div class="line"><span class="keyword">import</span> android.view.ViewGroup;</div><div class="line"><span class="keyword">import</span> android.view.Window;</div><div class="line"><span class="keyword">import</span> android.widget.Button;</div><div class="line"><span class="keyword">import</span> android.widget.ImageView;</div><div class="line"><span class="keyword">import</span> android.widget.Toast;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by zejian</div><div class="line"> * Time 16/8/7.</div><div class="line"> * Description:</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GuideActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">ViewPager</span>.<span class="title">OnPageChangeListener</span>, <span class="title">View</span>.<span class="title">OnClickListener</span> </span>&#123;</div><div class="line">    <span class="comment">// ViewPager的数据</span></div><div class="line">    <span class="keyword">private</span> List&lt;ImageView&gt; imageViewList;</div><div class="line">    <span class="comment">// 开始体验按钮</span></div><div class="line">    <span class="keyword">private</span> Button btnStartExperience;</div><div class="line">    <span class="comment">// ViewPager</span></div><div class="line">    ViewPager mViewPager;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        <span class="comment">// 去标题, 需要在setContentView方法之前调用</span></div><div class="line">        requestWindowFeature(Window.FEATURE_NO_TITLE);</div><div class="line">        setContentView(R.layout.activity_guide);</div><div class="line">        initView();<span class="comment">// 初始化控件</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 初始化控件</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initView</span><span class="params">()</span> </span>&#123;</div><div class="line">        mViewPager = (ViewPager) findViewById(R.id.vp_guide);</div><div class="line">        btnStartExperience = (Button) findViewById(R.id.btn_guide_start_experience);</div><div class="line">        initData();<span class="comment">// 初始化ViewPager数据</span></div><div class="line">        GuideAdapter adapter = <span class="keyword">new</span> GuideAdapter();</div><div class="line">        mViewPager.setAdapter(adapter);</div><div class="line">        mViewPager.setOnPageChangeListener(<span class="keyword">this</span>);<span class="comment">// 设置监听器</span></div><div class="line">        btnStartExperience.setOnClickListener(<span class="keyword">this</span>);<span class="comment">// 按钮添加监听</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * TODO：初始化ViewPager数据 void</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initData</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] imageResIDs = &#123;R.drawable.guide_1, R.drawable.guide_2,</div><div class="line">                R.drawable.guide_3&#125;;</div><div class="line">        imageViewList = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">        ImageView iv;<span class="comment">// 图片</span></div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; imageResIDs.length; i++) &#123;</div><div class="line">            iv = <span class="keyword">new</span> ImageView(<span class="keyword">this</span>);</div><div class="line">            iv.setBackgroundResource(imageResIDs[i]);</div><div class="line">            imageViewList.add(iv);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 当页面正在滚动时 position 当前选中的是哪个页面 positionOffset 比例 positionOffsetPixels 偏移像素</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageScrolled</span><span class="params">(<span class="keyword">int</span> position, <span class="keyword">float</span> positionOffset,</span></span></div><div class="line">                               <span class="keyword">int</span> positionOffsetPixels) &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 当页面被选中</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageSelected</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">        <span class="comment">// 显示体验按钮</span></div><div class="line">        <span class="keyword">if</span> (position == imageViewList.size() - <span class="number">1</span>) &#123;</div><div class="line">            btnStartExperience.setVisibility(View.VISIBLE);<span class="comment">// 显示</span></div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            btnStartExperience.setVisibility(View.GONE);<span class="comment">// 隐藏</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 当页面滚动状态改变</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageScrollStateChanged</span><span class="params">(<span class="keyword">int</span> state)</span> </span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 打开新的界面</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">        Toast.makeText(getApplicationContext(), <span class="string">"跳转新界面"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">GuideAdapter</span> <span class="keyword">extends</span> <span class="title">PagerAdapter</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> imageViewList.size();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isViewFromObject</span><span class="params">(View view, Object object)</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> view == object;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">/*</span></div><div class="line">         * 删除元素</div><div class="line">         */</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroyItem</span><span class="params">(ViewGroup container, <span class="keyword">int</span> position, Object object)</span> </span>&#123;</div><div class="line">            container.removeView((View) object);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> Object <span class="title">instantiateItem</span><span class="params">(ViewGroup container, <span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">            ImageView iv = imageViewList.get(position);</div><div class="line">            container.addView(iv);<span class="comment">// 1. 向ViewPager中添加一个view对象</span></div><div class="line">            <span class="keyword">return</span> iv; <span class="comment">// 2. 返回当前添加的view对象</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们运行看看其效果：<br><img src="http://oegt3xt9o.bkt.clouddn.com/gif_02.gif" alt=""></p>
+<h4 id="添加指示器"><a href="#添加指示器" class="headerlink" title="添加指示器"></a>添加指示器</h4><p>  终于到最后一步了，也是比较麻烦的一步，为每一个页面添加指示器，而且指示器必须跟随页面的移动而移动。那就先从布局开始吧，我们在activity_guide.xml文件最下方添加如下代码：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span></span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_alignParentBottom</span>=<span class="string">"true"</span></div><div class="line">        <span class="attr">android:layout_centerHorizontal</span>=<span class="string">"true"</span></div><div class="line">        <span class="attr">android:layout_marginBottom</span>=<span class="string">"30dip"</span>&gt;</div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">LinearLayout</span></span></div><div class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/ll_guide_point_group"</span></div><div class="line">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">            <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span>&gt;<span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">View</span></span></div><div class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/select_point"</span></div><div class="line">            <span class="attr">android:layout_width</span>=<span class="string">"10px"</span></div><div class="line">            <span class="attr">android:layout_height</span>=<span class="string">"10px"</span></div><div class="line">            <span class="attr">android:background</span>=<span class="string">"@drawable/point_select"</span> /&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>point_normal.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">shape</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:shape</span>=<span class="string">"oval"</span> &gt;</div><div class="line">    </div><div class="line">    <span class="tag">&lt;<span class="name">corners</span> <span class="attr">android:radius</span>=<span class="string">"5dip"</span> /&gt;</span></div><div class="line">    </div><div class="line">    <span class="tag">&lt;<span class="name">solid</span> <span class="attr">android:color</span>=<span class="string">"@android:color/darker_gray"</span> /&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>point_select.xml<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line">&lt;shape xmlns:android="http://schemas.android.com/apk/res/android"</div><div class="line">    android:shape="oval" &gt;</div><div class="line">    &lt;!-- 定义圆角半径为5dip --&gt;</div><div class="line">    &lt;corners android:radius="5dip" /&gt;</div><div class="line">    </div><div class="line">    &lt;solid android:color="#FF0000" /&gt;</div><div class="line"></div><div class="line">&lt;/shape&gt;</div></pre></td></tr></table></figure></p>
+<p>  我们在布局中添加了一个相对布局，其中包含了一个id为ll_guide_point_group的LinearLayout，这个线性布局主要用于存放指示器列表也就是3个灰色圆点，而另外一个id为select_point的View则是表示一个被选中的红色圆点。接下来我们就先来初始化这些点列表指示器的数据，因为灰色圆点的数量跟启动页面的数量是一致的，所以有多少个页面就有多少个灰色圆点，因此我们只需在生成图片时同时生成灰色圆点即可，每个点的宽高都为10，相隔距离也为10，代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initData</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] imageResIDs = &#123; R.drawable.guide_1, R.drawable.guide_2,</div><div class="line">                R.drawable.guide_3 &#125;;</div><div class="line">        imageViewList = <span class="keyword">new</span> ArrayList&lt;ImageView&gt;();</div><div class="line"></div><div class="line">        ImageView iv;<span class="comment">// 图片</span></div><div class="line">        View view;<span class="comment">// 点</span></div><div class="line">        LayoutParams params; <span class="comment">// 参数类</span></div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; imageResIDs.length; i++) &#123;</div><div class="line">            iv = <span class="keyword">new</span> ImageView(<span class="keyword">this</span>);</div><div class="line">            iv.setBackgroundResource(imageResIDs[i]);</div><div class="line">            imageViewList.add(iv);</div><div class="line">            <span class="comment">// 根据图片的个数, 每循环一次向LinearLayout中添加一个点</span></div><div class="line">            view = <span class="keyword">new</span> View(<span class="keyword">this</span>);</div><div class="line">            view.setBackgroundResource(R.drawable.point_normal);</div><div class="line">            <span class="comment">// 设置参数</span></div><div class="line">            params = <span class="keyword">new</span> LayoutParams(<span class="number">10</span>, <span class="number">10</span>);</div><div class="line">            <span class="keyword">if</span> (i != <span class="number">0</span>) &#123;</div><div class="line">                params.leftMargin = <span class="number">10</span>;</div><div class="line">            &#125;</div><div class="line">            view.setLayoutParams(params);<span class="comment">// 添加参数</span></div><div class="line">            llPointGroup.addView(view);</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>  从代码我们可以看出，根据图片的个数, 每循环一次向LinearLayout（llPointGroup）中添加一个点，最后便可以生成与图片数量相同的灰色圆点。现在我们来运行一下，看看点的效果： </p>
+<p>  嗯，小圆点已经出现，接下来就是如何移动的问题了。现在我们需要实现的效果是这样的，当我们滑动页面时，红色小圆点也跟着移动，例如当页面滑动到屏幕的一半时，红色小圆点也应处于灰色圆点的中间位置。如下图： </p>
+<p>  因此，我们去动态计算页面滑动的比例，然后按相同比例去计算红色小圆点需要滑动的距离。比如当第1页往第0页滑动到中间时，此时小红点的滑动距离应该如下计算： </p>
+<p>  我们假设屏幕宽度为320px，那么当第1页滑动到屏幕中间时，其滑动距离就是160，此时滑动比较就是160/320=0.5，也就是说红色小圆点的滑动比例也是0.5，通过这个滑动比例我们就可以计算出两个点间的滑动距离，我们可以通过以下方式计算出小红点要滑动的距离：<br>pWidth=llPointGroup.getChildAt(1).getLeft()-llPointGroup.getChildAt(0).getLeft()<br>  最后乘以滑动比例就是小红点的滑动距离了。当然这只是其中一次滑动的完整计算过程，页面滑动过程中的小红点变化的计算方式也是相同（因为滑动过程中会多次调用onPageScrolled方法后面会说明），现在剩下的问题是我们如何知道页面滑动过程呢？还记得前面我们ViewPager设置的OnPageChangeListener监听器吧？其中有个回调方法onPageScrolled(int position, float positionOffset, int positionOffsetPixels)的参数positionOffset不就是页面的滑动比例吗？确实如此，因此我们可以利用这个滑动比例来动态计算小红点的滑动距离，这样也就可以达到页面滑动的过程中小红点也跟随移动的效果。下面我们给出实现代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">* 当页面正在滚动时 position 当前选中的是哪个页面 positionOffset 比例 positionOffsetPixels 偏移像素</div><div class="line">*/</div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageScrolled</span><span class="params">(<span class="keyword">int</span> position, <span class="keyword">float</span> positionOffset,</span></span></div><div class="line">                          <span class="keyword">int</span> positionOffsetPixels) &#123;</div><div class="line">   <span class="comment">//获取两个点间的距离,获取一次即可</span></div><div class="line">   <span class="keyword">if</span>(pWidth==<span class="number">0</span>) &#123;</div><div class="line">       pWidth = llPointGroup.getChildAt(<span class="number">1</span>).getLeft()</div><div class="line">               - llPointGroup.getChildAt(<span class="number">0</span>).getLeft();</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="comment">// 获取点要移动的距离</span></div><div class="line">   <span class="keyword">int</span> leftMargin = (<span class="keyword">int</span>) (pWidth * (position + positionOffset));</div><div class="line">   <span class="comment">// 给红点设置参数</span></div><div class="line">   RelativeLayout.LayoutParams params = (android.widget.RelativeLayout.LayoutParams) mSelectPointView</div><div class="line">           .getLayoutParams();</div><div class="line">   params.leftMargin = leftMargin;</div><div class="line">   mSelectPointView.setLayoutParams(params);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里我们再来简单分析一下计算移动距离的代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取点要移动的距离</span></div><div class="line"><span class="keyword">int</span> leftMargin = (<span class="keyword">int</span>) (pWidth * (position + positionOffset));</div></pre></td></tr></table></figure></p>
+<p>  由于position表示当前页面的下标，取值范围在[0,2]，而positionOffset则表示当前界面的滑动比例，取值范围在[0,1),当页面向右滑动，positionOffset值不断变大，最后在趋近1的情况后突变为0。如果页面向左滑动，这个值不断变小，最后变为0，当positionOffset突变为0时则说明页面已处于展示位置。因此当我们把当前页面往左滑动时，当前position=0，而positionOffset则在不断的增大，我们过Log来观察一下 </p>
+<p>当第0页滑动到左侧，而第1页正好在中间展示时，position=1，而positionOffset=0； </p>
+<p>  因此我们可以通过positionOffset的值来计算小红点的滑动距离，当当前页面往左滑动时，positionOffset不断增大，此时由于position=0；所以pWidth * (position + positionOffset)也在不断增大，计算出小红点的移动距离leftMargin后，我们只需动态设置其params.leftMargin参数即可，这也就达到了小红点跟随移动的目的（onPageScrolled函数在移动中多次被触发），最终position=1，positionOffset=0，小红点也刚好落在了第2个灰色小圆点上。往后第3个点原理也是一样的，向右移动也依次类推即可。。<br>最后我们给出GuideActivity的代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.zejian.commonstartpage;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">import</span> android.app.Activity;</div><div class="line"><span class="keyword">import</span> android.os.Bundle;</div><div class="line"><span class="keyword">import</span> android.support.v4.view.PagerAdapter;</div><div class="line"><span class="keyword">import</span> android.support.v4.view.ViewPager;</div><div class="line"><span class="keyword">import</span> android.util.Log;</div><div class="line"><span class="keyword">import</span> android.view.View;</div><div class="line"><span class="keyword">import</span> android.view.ViewGroup;</div><div class="line"><span class="keyword">import</span> android.view.Window;</div><div class="line"><span class="keyword">import</span> android.widget.Button;</div><div class="line"><span class="keyword">import</span> android.widget.ImageView;</div><div class="line"><span class="keyword">import</span> android.widget.LinearLayout;</div><div class="line"><span class="keyword">import</span> android.widget.LinearLayout.LayoutParams;</div><div class="line"><span class="keyword">import</span> android.widget.RelativeLayout;</div><div class="line"><span class="keyword">import</span> android.widget.Toast;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by zejian</div><div class="line"> * Time 16/8/7.</div><div class="line"> * Description:</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GuideActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">ViewPager</span>.<span class="title">OnPageChangeListener</span>, <span class="title">View</span>.<span class="title">OnClickListener</span> </span>&#123;</div><div class="line">    <span class="comment">// ViewPager的数据</span></div><div class="line">    <span class="keyword">private</span> List&lt;ImageView&gt; imageViewList;</div><div class="line">    <span class="comment">// 点的组</span></div><div class="line">    <span class="keyword">private</span> LinearLayout llPointGroup;</div><div class="line">    <span class="comment">// 选中的点view对象</span></div><div class="line">    <span class="keyword">private</span> View mSelectPointView;</div><div class="line">    <span class="comment">// 开始体验按钮</span></div><div class="line">    <span class="keyword">private</span> Button btnStartExperience;</div><div class="line">    <span class="comment">// ViewPager</span></div><div class="line">    ViewPager mViewPager;</div><div class="line">    <span class="comment">// 点之间的宽度</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> pWidth;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        <span class="comment">// 去标题, 需要在setContentView方法之前调用</span></div><div class="line">        requestWindowFeature(Window.FEATURE_NO_TITLE);</div><div class="line">        setContentView(R.layout.activity_guide);</div><div class="line">        initView();<span class="comment">// 初始化控件</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 初始化控件</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initView</span><span class="params">()</span> </span>&#123;</div><div class="line">        mViewPager = (ViewPager) findViewById(R.id.vp_guide);</div><div class="line">        btnStartExperience = (Button) findViewById(R.id.btn_guide_start_experience);</div><div class="line">        llPointGroup = (LinearLayout) findViewById(R.id.ll_guide_point_group);</div><div class="line">        mSelectPointView = findViewById(R.id.select_point);</div><div class="line">        initData();<span class="comment">// 初始化ViewPager数据</span></div><div class="line">        GuideAdapter adapter = <span class="keyword">new</span> GuideAdapter();</div><div class="line">        mViewPager.setAdapter(adapter);</div><div class="line">        mViewPager.setOnPageChangeListener(<span class="keyword">this</span>);<span class="comment">// 设置监听器</span></div><div class="line">        btnStartExperience.setOnClickListener(<span class="keyword">this</span>);<span class="comment">// 按钮添加监听</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * TODO：初始化ViewPager数据 void</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initData</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] imageResIDs = &#123;R.drawable.guide_1, R.drawable.guide_2,</div><div class="line">                R.drawable.guide_3&#125;;</div><div class="line">        imageViewList = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">        ImageView iv;<span class="comment">// 图片</span></div><div class="line">        View view;<span class="comment">// 点</span></div><div class="line">        LayoutParams params; <span class="comment">// 参数类</span></div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; imageResIDs.length; i++) &#123;</div><div class="line">            iv = <span class="keyword">new</span> ImageView(<span class="keyword">this</span>);</div><div class="line">            iv.setBackgroundResource(imageResIDs[i]);</div><div class="line">            imageViewList.add(iv);</div><div class="line">            <span class="comment">// 根据图片的个数, 每循环一次向LinearLayout中添加一个点</span></div><div class="line">            view = <span class="keyword">new</span> View(<span class="keyword">this</span>);</div><div class="line">            view.setBackgroundResource(R.drawable.point_normal);</div><div class="line">            <span class="comment">// 设置参数</span></div><div class="line">            params = <span class="keyword">new</span> LayoutParams(<span class="number">10</span>, <span class="number">10</span>);</div><div class="line">            <span class="keyword">if</span> (i != <span class="number">0</span>) &#123;</div><div class="line">                params.leftMargin = <span class="number">10</span>;</div><div class="line">            &#125;</div><div class="line">            view.setLayoutParams(params);<span class="comment">// 添加参数</span></div><div class="line">            llPointGroup.addView(view);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 当页面正在滚动时 position 当前选中的是哪个页面 positionOffset 比例 positionOffsetPixels 偏移像素</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageScrolled</span><span class="params">(<span class="keyword">int</span> position, <span class="keyword">float</span> positionOffset,</span></span></div><div class="line">                               <span class="keyword">int</span> positionOffsetPixels) &#123;</div><div class="line"></div><div class="line">        Log.e(<span class="string">"zejian"</span>,<span class="string">"positionOffset:--&gt;"</span>+positionOffset);</div><div class="line">        Log.e(<span class="string">"zejian"</span>,<span class="string">"position:--&gt;"</span>+position);</div><div class="line">        <span class="comment">//获取两个点间的距离,获取一次即可</span></div><div class="line">        <span class="keyword">if</span>(pWidth==<span class="number">0</span>) &#123;</div><div class="line">            pWidth = llPointGroup.getChildAt(<span class="number">1</span>).getLeft()</div><div class="line">                    - llPointGroup.getChildAt(<span class="number">0</span>).getLeft();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">// 获取点要移动的距离</span></div><div class="line">        <span class="keyword">int</span> leftMargin = (<span class="keyword">int</span>) (pWidth * (position + positionOffset));</div><div class="line">        <span class="comment">// 给红点设置参数</span></div><div class="line">        RelativeLayout.LayoutParams params = (android.widget.RelativeLayout.LayoutParams) mSelectPointView</div><div class="line">                .getLayoutParams();</div><div class="line">        params.leftMargin = leftMargin;</div><div class="line">        mSelectPointView.setLayoutParams(params);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 当页面被选中</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageSelected</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">        <span class="comment">// 显示体验按钮</span></div><div class="line">        <span class="keyword">if</span> (position == imageViewList.size() - <span class="number">1</span>) &#123;</div><div class="line">            btnStartExperience.setVisibility(View.VISIBLE);<span class="comment">// 显示</span></div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            btnStartExperience.setVisibility(View.GONE);<span class="comment">// 隐藏</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 当页面滚动状态改变</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageScrollStateChanged</span><span class="params">(<span class="keyword">int</span> state)</span> </span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 打开新的界面</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">        Toast.makeText(getApplicationContext(), <span class="string">"跳转新界面"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">GuideAdapter</span> <span class="keyword">extends</span> <span class="title">PagerAdapter</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> imageViewList.size();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isViewFromObject</span><span class="params">(View view, Object object)</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> view == object;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">/*</span></div><div class="line">         * 删除元素</div><div class="line">         */</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroyItem</span><span class="params">(ViewGroup container, <span class="keyword">int</span> position, Object object)</span> </span>&#123;</div><div class="line">            container.removeView((View) object);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> Object <span class="title">instantiateItem</span><span class="params">(ViewGroup container, <span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">            ImageView iv = imageViewList.get(position);</div><div class="line">            container.addView(iv);<span class="comment">// 1. 向ViewPager中添加一个view对象</span></div><div class="line">            <span class="keyword">return</span> iv; <span class="comment">// 2. 返回当前添加的view对象</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>最近效果：<br><img src="http://oegt3xt9o.bkt.clouddn.com/gif_03.gif" alt=""></p>
+<p>到此，启动页已全部完成。</p>
+<h3 id="切换动画"><a href="#切换动画" class="headerlink" title="切换动画"></a>切换动画</h3><h4 id="动画一"><a href="#动画一" class="headerlink" title="动画一"></a>动画一</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DepthPageTransformer</span> <span class="keyword">implements</span> <span class="title">ViewPager</span>.<span class="title">PageTransformer</span> </span>&#123;  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> MIN_SCALE = <span class="number">0.75f</span>;  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">transformPage</span><span class="params">(View view, <span class="keyword">float</span> position)</span> </span>&#123;  </div><div class="line">        <span class="keyword">int</span> pageWidth = view.getWidth();  </div><div class="line">  </div><div class="line">        <span class="keyword">if</span> (position &lt; -<span class="number">1</span>) &#123; <span class="comment">// [-Infinity,-1)  </span></div><div class="line">            <span class="comment">// This page is way off-screen to the left.  </span></div><div class="line">            view.setAlpha(<span class="number">0</span>);  </div><div class="line">  </div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (position &lt;= <span class="number">0</span>) &#123; <span class="comment">// [-1,0]  </span></div><div class="line">            <span class="comment">// Use the default slide transition when moving to the left page  </span></div><div class="line">            view.setAlpha(<span class="number">1</span>);  </div><div class="line">            view.setTranslationX(<span class="number">0</span>);  </div><div class="line">            view.setScaleX(<span class="number">1</span>);  </div><div class="line">            view.setScaleY(<span class="number">1</span>);  </div><div class="line">  </div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (position &lt;= <span class="number">1</span>) &#123; <span class="comment">// (0,1]  </span></div><div class="line">            <span class="comment">// Fade the page out.  </span></div><div class="line">            view.setAlpha(<span class="number">1</span> - position);  </div><div class="line">  </div><div class="line">            <span class="comment">// Counteract the default slide transition  </span></div><div class="line">            view.setTranslationX(pageWidth * -position);  </div><div class="line">  </div><div class="line">            <span class="comment">// Scale the page down (between MIN_SCALE and 1)  </span></div><div class="line">            <span class="keyword">float</span> scaleFactor = MIN_SCALE  </div><div class="line">                    + (<span class="number">1</span> - MIN_SCALE) * (<span class="number">1</span> - Math.abs(position));  </div><div class="line">            view.setScaleX(scaleFactor);  </div><div class="line">            view.setScaleY(scaleFactor);  </div><div class="line">  </div><div class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// (1,+Infinity]  </span></div><div class="line">            <span class="comment">// This page is way off-screen to the right.  </span></div><div class="line">            view.setAlpha(<span class="number">0</span>);  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mViewPager.setPageTransformer(<span class="keyword">true</span>, <span class="keyword">new</span> DepthPageTransformer());</div></pre></td></tr></table></figure></p>
+<p>效果：<br><img src="http://oegt3xt9o.bkt.clouddn.com/gif_04.gif" alt=""></p>
+<h4 id="动画二"><a href="#动画二" class="headerlink" title="动画二"></a>动画二</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ZoomOutPageTransformer</span> <span class="keyword">implements</span> <span class="title">ViewPager</span>.<span class="title">PageTransformer</span>  </span></div><div class="line">&#123;  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> MIN_SCALE = <span class="number">0.85f</span>;  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> MIN_ALPHA = <span class="number">0.5f</span>;  </div><div class="line">  </div><div class="line">    <span class="meta">@SuppressLint</span>(<span class="string">"NewApi"</span>)  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">transformPage</span><span class="params">(View view, <span class="keyword">float</span> position)</span>  </span></div><div class="line">    &#123;  </div><div class="line">        <span class="keyword">int</span> pageWidth = view.getWidth();  </div><div class="line">        <span class="keyword">int</span> pageHeight = view.getHeight();  </div><div class="line">  </div><div class="line">        Log.e(<span class="string">"TAG"</span>, view + <span class="string">" , "</span> + position + <span class="string">""</span>);  </div><div class="line">  </div><div class="line">        <span class="keyword">if</span> (position &lt; -<span class="number">1</span>)  </div><div class="line">        &#123; <span class="comment">// [-Infinity,-1)  </span></div><div class="line">            <span class="comment">// This page is way off-screen to the left.  </span></div><div class="line">            view.setAlpha(<span class="number">0</span>);  </div><div class="line">  </div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (position &lt;= <span class="number">1</span>) <span class="comment">//a页滑动至b页 ； a页从 0.0 -1 ；b页从1 ~ 0.0  </span></div><div class="line">        &#123; <span class="comment">// [-1,1]  </span></div><div class="line">            <span class="comment">// Modify the default slide transition to shrink the page as well  </span></div><div class="line">            <span class="keyword">float</span> scaleFactor = Math.max(MIN_SCALE, <span class="number">1</span> - Math.abs(position));  </div><div class="line">            <span class="keyword">float</span> vertMargin = pageHeight * (<span class="number">1</span> - scaleFactor) / <span class="number">2</span>;  </div><div class="line">            <span class="keyword">float</span> horzMargin = pageWidth * (<span class="number">1</span> - scaleFactor) / <span class="number">2</span>;  </div><div class="line">            <span class="keyword">if</span> (position &lt; <span class="number">0</span>)  </div><div class="line">            &#123;  </div><div class="line">                view.setTranslationX(horzMargin - vertMargin / <span class="number">2</span>);  </div><div class="line">            &#125; <span class="keyword">else</span>  </div><div class="line">            &#123;  </div><div class="line">                view.setTranslationX(-horzMargin + vertMargin / <span class="number">2</span>);  </div><div class="line">            &#125;  </div><div class="line">  </div><div class="line">            <span class="comment">// Scale the page down (between MIN_SCALE and 1)  </span></div><div class="line">            view.setScaleX(scaleFactor);  </div><div class="line">            view.setScaleY(scaleFactor);  </div><div class="line">  </div><div class="line">            <span class="comment">// Fade the page relative to its size.  </span></div><div class="line">            view.setAlpha(MIN_ALPHA + (scaleFactor - MIN_SCALE)  </div><div class="line">                    / (<span class="number">1</span> - MIN_SCALE) * (<span class="number">1</span> - MIN_ALPHA));  </div><div class="line">  </div><div class="line">        &#125; <span class="keyword">else</span>  </div><div class="line">        &#123; <span class="comment">// (1,+Infinity]  </span></div><div class="line">            <span class="comment">// This page is way off-screen to the right.  </span></div><div class="line">            view.setAlpha(<span class="number">0</span>);  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mViewPager.setPageTransformer(<span class="keyword">true</span>, <span class="keyword">new</span> ZoomOutPageTransformer());</div></pre></td></tr></table></figure></p>
+<p>效果：<br><img src="http://oegt3xt9o.bkt.clouddn.com/gif_05.gif" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/项目/" rel="tag">#项目</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/03/Zxing集成/" rel="next" title="Zxing集成">
+                <i class="fa fa-chevron-left"></i> Zxing集成
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/04/初试MVP/" rel="prev" title="初试MVP">
+                初试MVP <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="进击的白小黑" />
+          <p class="site-author-name" itemprop="name">进击的白小黑</p>
+          <p class="site-description motion-element" itemprop="description">你要的,时间都会给你</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#WelcomeActivity"><span class="nav-number">1.</span> <span class="nav-text">WelcomeActivity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动页实现过程"><span class="nav-number">2.</span> <span class="nav-text">启动页实现过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实现整体滑动效果"><span class="nav-number">2.1.</span> <span class="nav-text">实现整体滑动效果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加按钮"><span class="nav-number">2.2.</span> <span class="nav-text">添加按钮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加指示器"><span class="nav-number">2.3.</span> <span class="nav-text">添加指示器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切换动画"><span class="nav-number">3.</span> <span class="nav-text">切换动画</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#动画一"><span class="nav-number">3.1.</span> <span class="nav-text">动画一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动画二"><span class="nav-number">3.2.</span> <span class="nav-text">动画二</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">进击的白小黑</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

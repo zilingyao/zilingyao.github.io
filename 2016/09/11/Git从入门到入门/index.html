@@ -1,0 +1,679 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="简介git命令是一些命令行工具的集合，它可以用来跟踪，记录文件的变动。比如你可以进行保存，比对，分析，合并等等。这个过程被称之为版本控制。已经有一系列的版本控制系统，比如SVN, Mercurial, Perforce, CVS, Bitkeepe等等。
+Git是分布式的，这意味着它并不依赖于中心服务器，任何一台机器都可以有一个本地版本的控制系统，我们称之为仓库。如果是多人协作的话，你需要还需要一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git从入门到入门">
+<meta property="og:url" content="http://yoursite.com/2016/09/11/Git从入门到入门/index.html">
+<meta property="og:site_name" content="进击的白小黑">
+<meta property="og:description" content="简介git命令是一些命令行工具的集合，它可以用来跟踪，记录文件的变动。比如你可以进行保存，比对，分析，合并等等。这个过程被称之为版本控制。已经有一系列的版本控制系统，比如SVN, Mercurial, Perforce, CVS, Bitkeepe等等。
+Git是分布式的，这意味着它并不依赖于中心服务器，任何一台机器都可以有一个本地版本的控制系统，我们称之为仓库。如果是多人协作的话，你需要还需要一">
+<meta property="og:updated_time" content="2016-10-17T03:41:14.204Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git从入门到入门">
+<meta name="twitter:description" content="简介git命令是一些命令行工具的集合，它可以用来跟踪，记录文件的变动。比如你可以进行保存，比对，分析，合并等等。这个过程被称之为版本控制。已经有一系列的版本控制系统，比如SVN, Mercurial, Perforce, CVS, Bitkeepe等等。
+Git是分布式的，这意味着它并不依赖于中心服务器，任何一台机器都可以有一个本地版本的控制系统，我们称之为仓库。如果是多人协作的话，你需要还需要一">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '进击的白小黑'
+    }
+  };
+</script>
+
+  <title> Git从入门到入门 | 进击的白小黑 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">进击的白小黑</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Git从入门到入门
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-11T19:43:41+00:00" content="2016-09-11">
+              2016-09-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>git命令是一些命令行工具的集合，它可以用来跟踪，记录文件的变动。比如你可以进行保存，比对，分析，合并等等。这个过程被称之为版本控制。已经有一系列的版本控制系统，比如SVN, Mercurial, Perforce, CVS, Bitkeepe等等。</p>
+<p>Git是分布式的，这意味着它并不依赖于中心服务器，任何一台机器都可以有一个本地版本的控制系统，我们称之为仓库。如果是多人协作的话，你需要还需要一个线上仓库，用来同步信息。这就是GitHub, BitBucket的工作。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>本地目录下，在命令行里新建一个代码仓库（repository）<br>里面只有一个README.md<br><a id="more"></a><br>命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">touch README.md</div><div class="line">git init</div></pre></td></tr></table></figure></p>
+<p>初始化repository<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add README.md</div></pre></td></tr></table></figure></p>
+<p>将README.md加入到缓存区 一次只加一个  很不爽的说<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add --a</div></pre></td></tr></table></figure></p>
+<p>将所有改动提交到缓存（注意是两个杠） 酸爽<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -m &quot;first commit&quot;</div></pre></td></tr></table></figure></p>
+<p>提交改变，并且附上提交信息”first commit”</p>
+<h2 id="Push"><a href="#Push" class="headerlink" title="Push"></a>Push</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add origin https://github.com/XXX(username)/YYYY(projectname).git</div></pre></td></tr></table></figure>
+<p>加上一个remote的地址，名叫origin，地址是github上的地址（Create a new repo就会有）<br>因为Git是分布式的，所以可以有多个remote.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push -u origin master</div></pre></td></tr></table></figure></p>
+<p>将本地内容push到github上的那个地址上去。<br>参数-u<br>用了参数-u之后，以后就可以直接用不带参数的git pull从之前push到的分支来pull。<br>此时如果origin的master分支上有一些本地没有的提交,push会失败.<br>所以解决的办法是, 首先设定本地master的上游分支:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch --set-upstream-to=origin/master</div></pre></td></tr></table></figure></p>
+<p>然后pull:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull --rebase</div></pre></td></tr></table></figure></p>
+<p>最后再push:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push</div></pre></td></tr></table></figure></p>
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><p>新建好的代码库有且仅有一个主分支（master），它是自动建立的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch develop master</div></pre></td></tr></table></figure>
+<p>新建一个叫develop的分支，基于master分支</p>
+<p>切换到这个分支：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout develop</div></pre></td></tr></table></figure>
+<p>现在可以在这个develop分支上做一些改动，并且提交。<br>注意：<br>切换分支的时候可以发现，在Windows中的repository文件夹中的文件内容也会实时相应改变，变成当前分支的内容。</p>
+<p>在本地新建一个分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch Branch1</div></pre></td></tr></table></figure></p>
+<p>切换到你的新分支:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout Branch1</div></pre></td></tr></table></figure></p>
+<p>将新分支发布在github上：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin Branch1</div></pre></td></tr></table></figure></p>
+<p>在本地删除一个分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -d Branch1</div></pre></td></tr></table></figure></p>
+<p>在github远程端删除一个分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin :Branch1   (分支名前的冒号代表删除)</div></pre></td></tr></table></figure></p>
+<p>push方法1：</p>
+<p>现在如果想直接Push这个develop分支上的内容到github<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push -u origin</div></pre></td></tr></table></figure></p>
+<p>如果是新建分支第一次push，会提示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">fatal: The current branch develop has no upstream branch.</div><div class="line">To push the current branch and set the remote as upstream, use</div><div class="line">git push --set-upstream origin develop</div></pre></td></tr></table></figure></p>
+<p>输入这行命令，然后输入用户名和密码，就push成功了。</p>
+<p>以后的push就只需要输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin</div></pre></td></tr></table></figure></p>
+<p>push方法2：</p>
+<p>比如新建了一个叫dev的分支，而github网站上还没有，可以直接：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push -u origin dev</div></pre></td></tr></table></figure></p>
+<p>这样一个新分支就创建好了。</p>
+<p>push方法3：</p>
+<p>提交到github的分支有多个，提交时可以用这样的格式：<br>　　<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push -u origin local:remote</div></pre></td></tr></table></figure></p>
+<p>比如：git push -u origin master:master</p>
+<p>表明将本地的master分支（冒号前）push到github的master分支（冒号后）。<br>如果左边不写为空，将会删除远程的右边分支。</p>
+<h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">	git branch</div><div class="line">```		</div><div class="line">可以查看所有的分支</div><div class="line"></div><div class="line">```shell</div><div class="line">	git branch -d develop2</div></pre></td></tr></table></figure>
+<p>将develop2分支删除</p>
+<h2 id="远端仓库"><a href="#远端仓库" class="headerlink" title="远端仓库"></a>远端仓库</h2><p>1.链接远端仓库 - git remote add</p>
+<p>为了能够上传到远端仓库，我们需要先建立起链接，这篇教程中，远端仓库的地址为：<a href="https://github.com/tutorialzine/awesome-project,但你应该自己在Github" target="_blank" rel="external">https://github.com/tutorialzine/awesome-project,但你应该自己在Github</a>, BitBucket上搭建仓库，自己一步一步尝试。</p>
+<p>添加测试用的远端仓库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add origin https://github.com/tutorialzine/awesome-project.git</div></pre></td></tr></table></figure></p>
+<p>一个项目可以同时拥有好几个远端仓库为了能够区分，通常会起不同的名字。通常主远端仓库被称为origin。</p>
+<p>2.克隆仓库 - git clone</p>
+<p>放在Github上的开源项目，人们可以看到你的代码。可以使用 git clone进行下载到本地。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/tutorialzine/awesome-project.git</div></pre></td></tr></table></figure></p>
+<p>本地也会创建一个新的仓库，并自动将github上的分支设为远端分支。</p>
+<h2 id="加Tag"><a href="#加Tag" class="headerlink" title="加Tag"></a>加Tag</h2><p>　　git tag tagname develop<br>　　git tag中的两个参数，一个是标签名称，另一个是希望打标签的点develop分支的末梢。</p>
+<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout master</div></pre></td></tr></table></figure>
+<p>先转到主分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">　　git merge --no-ff develop</div></pre></td></tr></table></figure></p>
+<p>然后把develop分支merge过来<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -d amazing_new_feature</div></pre></td></tr></table></figure></p>
+<p>删除掉分支<br>　　<br>参数意义：<br>　　不用参数的默认情况下，是执行快进式合并。<br>　　使用参数–no-ff，会执行正常合并，在master分支上生成一个新节点。<br>　　merge的时候如果遇到冲突，就手动解决，然后重新add，commit即可。<br><a href="https://git-scm.com/download/gui/linux" target="_blank" rel="external">GUI工具</a></p>
+<h2 id="高级"><a href="#高级" class="headerlink" title="高级"></a>高级</h2><p>这篇文章的最后一节，我们来说些比较高级并且使用的技巧。</p>
+<p>1.比对两个不同提交之间的差别</p>
+<p>每次提交都有一个唯一id，查看所有提交和他们的id，可以使用 git log:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">	git log</div><div class="line"></div><div class="line">commit ba25c0ff30e1b2f0259157b42b9f8f5d174d80d7</div><div class="line">Author: Tutorialzine</div><div class="line">Date:   Mon May 30 17:15:28 2016 +0300</div><div class="line"></div><div class="line">    New feature complete</div><div class="line"></div><div class="line">commit b10cc1238e355c02a044ef9f9860811ff605c9b4</div><div class="line">Author: Tutorialzine</div><div class="line">Date:   Mon May 30 16:30:04 2016 +0300</div><div class="line"></div><div class="line">    Added content to hello.txt</div><div class="line"></div><div class="line">commit 09bd8cc171d7084e78e4d118a2346b7487dca059</div><div class="line">Author: Tutorialzine</div><div class="line">Date:   Sat May 28 17:52:14 2016 +0300</div><div class="line"></div><div class="line">    Initial commit</div></pre></td></tr></table></figure></p>
+<p>id 很长，但是你并不需要复制整个字符串，前一小部分就够了。<br>查看某一次提交更新了什么，使用 git show:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">	git show b10cc123</div><div class="line"></div><div class="line">commit b10cc1238e355c02a044ef9f9860811ff605c9b4</div><div class="line">Author: Tutorialzine</div><div class="line">Date:   Mon May 30 16:30:04 2016 +0300</div><div class="line"></div><div class="line">    Added content to hello.txt</div><div class="line"></div><div class="line">diff --git a/hello.txt b/hello.txt</div><div class="line">index e69de29..b546a21 100644</div><div class="line">--- a/hello.txt</div><div class="line">+++ b/hello.txt</div><div class="line">@@ -0,0 +1 @@</div><div class="line">+Nice weather today, isn&apos;t it?</div></pre></td></tr></table></figure></p>
+<p>查看两次提交的不同，可以使用git diff [commit-from]..[commit-to] 语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">	git diff 09bd8cc..ba25c0ff</div><div class="line"></div><div class="line">diff --git a/feature.txt b/feature.txt</div><div class="line">new file mode 100644</div><div class="line">index 0000000..e69de29</div><div class="line">diff --git a/hello.txt b/hello.txt</div><div class="line">index e69de29..b546a21 100644</div><div class="line">--- a/hello.txt</div><div class="line">+++ b/hello.txt</div><div class="line">@@ -0,0 +1 @@</div><div class="line">+Nice weather today, isn&apos;t it?</div></pre></td></tr></table></figure></p>
+<p>比较首次提交和最后一次提交，我们可以看到所有的更改。当然使用git difftool命令更加方便。</p>
+<p>2.回滚某个文件到之前的版本</p>
+<p>git 允许我们将某个特定的文件回滚到特定的提交，使用的也是 git checkout。</p>
+<p>下面的例子，我们将hello.txt回滚到最初的状态，需要指定回滚到哪个提交，以及文件的全路径。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout 09bd8cc1 hello.txt</div></pre></td></tr></table></figure></p>
+<p>3.回滚提交</p>
+<p>如果你发现最新的一次提交完了加某个文件，你可以通过 git commit —amend来修复，它会把最新的提交打回暂存区，并尝试重新提交。</p>
+<p>如果是更复杂的情况，比如不是最新的提交了。那你可以使用git revert。</p>
+<p>最新的一次提交别名也叫HEAD。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git revert HEAD</div></pre></td></tr></table></figure></p>
+<p>其他提交可以使用id:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git revert b10cc123</div></pre></td></tr></table></figure></p>
+<p>混滚提交时，发生冲突是非常频繁的。当文件被后面的提交修改了以后，git不能正确回滚。</p>
+<p>4.解决合并冲突</p>
+<p>冲突经常出现在合并分支或者是拉去别人的代码。有些时候git能自动处理冲突，但大部分需要我们手动处理。</p>
+<p>比如John 和 Tim 分别在各自的分支上写了两部分代码。<br>John 喜欢 for:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Use a for loop to console.log contents.</span></div><div class="line"><span class="keyword">for</span>(var i=<span class="number">0</span>; i&lt;arr.length; i++) &#123;</div><div class="line">console.log(arr[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Tim 喜欢 forEach:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Use forEach to console.log contents.</span></div><div class="line">arr.forEach(function(item) &#123;</div><div class="line">console.log(item);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>假设John 现在去拉取 Tim的代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">	git merge tim_branch</div><div class="line">Auto-merging print_array.js</div><div class="line">CONFLICT (content): Merge conflict in print_array.js</div><div class="line">Automatic merge failed; fix conflicts and then commit the result.</div></pre></td></tr></table></figure></p>
+<p>这时候git并不知道如何解决冲突，因为他不知道John和Tim谁写得更好。</p>
+<p>于是它就在代码中插入标记。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</div><div class="line"><span class="comment">// Use a for loop to console.log contents.</span></div><div class="line"><span class="keyword">for</span>(var i=<span class="number">0</span>; i&lt;arr.length; i++) &#123;</div><div class="line">    console.log(arr[i]);</div><div class="line">&#125;</div><div class="line">=======</div><div class="line"><span class="comment">// Use forEach to console.log contents.</span></div><div class="line">arr.forEach(function(item) &#123;</div><div class="line">    console.log(item);</div><div class="line">&#125;);</div><div class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; Tim s commit.</div></pre></td></tr></table></figure></p>
+<p>==== 号上方是当前最新一次提交，下方是冲突的代码。我们需要解决这样的冲突，经过组委会成员讨论，一致认定，在座的各位都是垃圾！两个都不要。改成下面的代码。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Not using for loop or forEach.</span></div><div class="line"><span class="comment">// Use Array.toString() to console.log contents.</span></div><div class="line">console.log(arr.toString());</div></pre></td></tr></table></figure></p>
+<p>好了，再提交一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git add -A</div><div class="line">git commit -m &quot;Array printing conflict resolved.&quot;</div></pre></td></tr></table></figure></p>
+<p>如果在大型项目中，这个过程可能容易出问题。你可以使用GUI 工具来帮助你。使用 git mergetool。</p>
+<p>5.配置 .gitignore</p>
+<p>大部分项目中，会有写文件，文件夹是我们不想提交的。为了防止一不小心提交，我们需要gitignore文件：</p>
+<p>在项目根目录创建.gitignore文件<br>在文件中列出不需要提交的文件名，文件夹名，每个一行<br>.gitignore文件需要提交，就像普通文件一样<br>通常会被ignore的文件有：</p>
+<p>log文件<br>task runner builds<br>node_modules等文件夹<br>IDEs生成的文件<br>个人笔记<br>例如：</p>
+<p>*.log<br>build/<br>node_modules/<br>.idea/<br>my_notes.txt</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/11/自定义CheckBox/" rel="next" title="自定义CheckBox">
+                <i class="fa fa-chevron-left"></i> 自定义CheckBox
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/03/Zxing集成/" rel="prev" title="Zxing集成">
+                Zxing集成 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="进击的白小黑" />
+          <p class="site-author-name" itemprop="name">进击的白小黑</p>
+          <p class="site-description motion-element" itemprop="description">你要的,时间都会给你</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Push"><span class="nav-number">3.</span> <span class="nav-text">Push</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支"><span class="nav-number">4.</span> <span class="nav-text">分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除分支"><span class="nav-number">5.</span> <span class="nav-text">删除分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远端仓库"><span class="nav-number">6.</span> <span class="nav-text">远端仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加Tag"><span class="nav-number">7.</span> <span class="nav-text">加Tag</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并分支"><span class="nav-number">8.</span> <span class="nav-text">合并分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级"><span class="nav-number">9.</span> <span class="nav-text">高级</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">进击的白小黑</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
